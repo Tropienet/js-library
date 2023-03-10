@@ -27,8 +27,8 @@ function createBookCard(book) {
   const pageContainer = document.querySelector('.container');
 
   const bookCardContainer = document.createElement('div');
-  const bookTitle = document.createElement('h1');
-  const bookAuthor = document.createElement('h2');
+  const bookTitle = document.createElement('h2');
+  const bookAuthor = document.createElement('h3');
   const bookPages = document.createElement('p');
   const readStatus = document.createElement('p');
 
@@ -42,6 +42,8 @@ function createBookCard(book) {
   bookCardContainer.appendChild(bookPages);
   bookCardContainer.appendChild(readStatus);
 
+  bookCardContainer.classList.add('info-card');
+
   pageContainer.appendChild(bookCardContainer);
 }
 
@@ -52,3 +54,23 @@ function displayBooks() {
 }
 
 displayBooks();
+
+function createNewBookButton() {
+  const newBookButton = document.querySelector('.new-book-button');
+
+  newBookButton.addEventListener('click', () => {
+    document.querySelector('.form-container').style.visibility = 'visible';
+  });
+}
+
+createNewBookButton();
+
+function createSubmitButton() {
+  const submitButton = document.querySelector('#submit-btn');
+
+  submitButton.addEventListener('click', () => {
+    document.querySelector('.form-container').style.visibility = 'hidden';
+  });
+}
+
+createSubmitButton();

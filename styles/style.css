@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #FF6B6B;
+    color: rgb(255, 255, 255);
+}
+
+.site-name {
+    margin-left: 50px;
+}
+
+.site-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 100px;
+}
+
+.info-card {
+    border: solid 1px black;
+    border-radius: 15px;
+    padding: 15px;
+    min-width: 300px;
+    background-color: #FFB2EF;
+    color: white;
+    box-shadow: 15px 15px #a388ee;
+}
+
+.new-book-section {
+    margin-top: 100px;
+}
+
+.hello {
+    margin-top: 100px;
+}
