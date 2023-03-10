@@ -8,12 +8,22 @@ function Book(title, author, pages, readStatus) {
 }
 
 function addBookToLibrary() {
-//  const book = new Book(prompt(), prompt(), parseInt(prompt(), 10), prompt());
-  console.log('hello World');
-  // myLibrary.push(book);
-}
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
 
-addBookToLibrary();
+  let readStatus = 'Not read';
+
+  if (document.getElementById('true').checked) {
+    readStatus = 'Read';
+  } else {
+    readStatus = 'Not read';
+  }
+
+  const book = new Book(title, author, pages, readStatus);
+
+  myLibrary.push(book);
+}
 
 const HarryPotter = new Book('Harry Potter', 'JK Rowling', '500', 'Read');
 const Hobbit = new Book('Hobbit', 'Toliken', '295', 'Not read');
@@ -23,7 +33,7 @@ myLibrary.push(Hobbit);
 myLibrary.push(ASIOF);
 myLibrary.push(HarryPotter);
 
-function createBookCard(book) {
+function createBookCard(book, index) {
   const pageContainer = document.querySelector('.container');
 
   const bookCardContainer = document.createElement('div');
@@ -31,6 +41,8 @@ function createBookCard(book) {
   const bookAuthor = document.createElement('h3');
   const bookPages = document.createElement('p');
   const readStatus = document.createElement('p');
+
+  bookCardContainer.classList.add(`${`a${index}`}`);
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
@@ -47,9 +59,22 @@ function createBookCard(book) {
   pageContainer.appendChild(bookCardContainer);
 }
 
+function deleteBookCard(book, index) {
+  if (document.querySelector(`.a${index}`) == null) {
+    console.log("This book doesn't yet exist");
+  } else {
+    const bookClass = document.querySelector(`.a${index}`);
+    bookClass.remove();
+  }
+
+  console.log(book);
+  console.log(index);
+}
+
 function displayBooks() {
-  myLibrary.forEach((book) => {
-    createBookCard(book);
+  myLibrary.forEach((book, index) => {
+    deleteBookCard(book, index);
+    createBookCard(book, index);
   });
 }
 
@@ -69,6 +94,8 @@ function createSubmitButton() {
   const submitButton = document.querySelector('#submit-btn');
 
   submitButton.addEventListener('click', () => {
+    addBookToLibrary();
+    displayBooks();
     document.querySelector('.form-container').style.visibility = 'hidden';
   });
 }
