@@ -34,7 +34,8 @@ body {
     margin-top: 100px;
 }
 
-.info-card {
+.info-card,
+#form {
     border: solid 1px black;
     border-radius: 15px;
     padding: 15px;
@@ -50,4 +51,58 @@ body {
 
 .hello {
     margin-top: 100px;
+}
+
+.new-book-button,
+#submit-btn {
+    border: 2px solid currentColor;
+    border-radius: 3rem;
+    color: #DDFFF7;
+    font-family: roboto;
+    font-size: 1.2rem;
+    font-weight: 100;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    position: relative;
+    text-decoration: none;
+    transition: 0.2s transform ease-in-out;
+    will-change: transform;
+    z-index: 0;
+    background-color: #462255;
+  }
+
+  .new-book-button::after,
+  #submit-btn::after {
+    background-color: #DDFFF7;
+    border-radius: 3rem;
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: translate(-100%, 0) rotate(10deg);
+    transform-origin: top left;
+    transition: 0.2s transform ease-out;
+    will-change: transform;
+    z-index: -1;
+  }
+  .new-book-button:hover::after,
+  #submit-btn:hover::after {
+    transform: translate(0, 0);
+  }
+  .new-book-button:hover,
+  #submit-btn:hover {
+    border: 2px solid transparent;
+    color: #462255;
+    transform: scale(1.05);
+    will-change: transform;
+  }
+
+#form {
+    border: solid 1px black;
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 15px;
 }
