@@ -27,11 +27,19 @@ function addBookToLibrary() {
 
 const HarryPotter = new Book('Harry Potter', 'JK Rowling', '500', 'Read');
 const Hobbit = new Book('Hobbit', 'Toliken', '295', 'Not read');
-const ASIOF = new Book('A song of ice and fire', 'GRRM', '1095', 'read');
+const ASIOF = new Book('A song of ice and fire', 'GRRM', '1095', 'Read');
 
 myLibrary.push(Hobbit);
 myLibrary.push(ASIOF);
 myLibrary.push(HarryPotter);
+
+Book.prototype.changeReadStatus = function () {
+  if (this.readStatus === 'Read') {
+    this.readStatus = 'Not read';
+  } else {
+    this.readStatus = 'Read';
+  }
+};
 
 function createBookCard(book, index) {
   const pageContainer = document.querySelector('.container');
@@ -42,10 +50,16 @@ function createBookCard(book, index) {
   const bookPages = document.createElement('p');
   const readStatus = document.createElement('p');
   const deleteButton = document.createElement('button');
+  const changeReadStatusButton = document.createElement('button');
 
   deleteButton.addEventListener('click', () => {
     document.querySelector(`.a${index}`).remove();
     myLibrary.splice(index, 1);
+  });
+
+  changeReadStatusButton.addEventListener('click', () => {
+    myLibrary[index].changeReadStatus();
+    readStatus.textContent = book.readStatus;
   });
 
   bookCardContainer.classList.add(`${`a${index}`}`);
@@ -55,12 +69,14 @@ function createBookCard(book, index) {
   bookPages.textContent = book.pages;
   readStatus.textContent = book.readStatus;
   deleteButton.textContent = 'Delete';
+  changeReadStatusButton.textContent = 'Change read status';
 
   bookCardContainer.appendChild(bookTitle);
   bookCardContainer.appendChild(bookAuthor);
   bookCardContainer.appendChild(bookPages);
   bookCardContainer.appendChild(readStatus);
   bookCardContainer.appendChild(deleteButton);
+  bookCardContainer.appendChild(changeReadStatusButton);
 
   bookCardContainer.classList.add('info-card');
 
