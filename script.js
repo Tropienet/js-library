@@ -41,6 +41,12 @@ function createBookCard(book, index) {
   const bookAuthor = document.createElement('h3');
   const bookPages = document.createElement('p');
   const readStatus = document.createElement('p');
+  const deleteButton = document.createElement('button');
+
+  deleteButton.addEventListener('click', () => {
+    document.querySelector(`.a${index}`).remove();
+    myLibrary.splice(index, 1);
+  });
 
   bookCardContainer.classList.add(`${`a${index}`}`);
 
@@ -48,11 +54,13 @@ function createBookCard(book, index) {
   bookAuthor.textContent = book.author;
   bookPages.textContent = book.pages;
   readStatus.textContent = book.readStatus;
+  deleteButton.textContent = 'Delete';
 
   bookCardContainer.appendChild(bookTitle);
   bookCardContainer.appendChild(bookAuthor);
   bookCardContainer.appendChild(bookPages);
   bookCardContainer.appendChild(readStatus);
+  bookCardContainer.appendChild(deleteButton);
 
   bookCardContainer.classList.add('info-card');
 
