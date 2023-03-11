@@ -52,6 +52,9 @@ function createBookCard(book, index) {
   const deleteButton = document.createElement('button');
   const changeReadStatusButton = document.createElement('button');
 
+  deleteButton.classList.add('delete-btn');
+  changeReadStatusButton.classList.add('read-btn');
+
   deleteButton.addEventListener('click', () => {
     document.querySelector(`.a${index}`).remove();
     myLibrary.splice(index, 1);

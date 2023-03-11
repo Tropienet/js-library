@@ -106,3 +106,22 @@ body {
     padding: 20px;
     border-radius: 15px;
 }
+
+.read-btn {
+    margin: 0 0 0 75px;
+}
+
+.read-btn,
+.delete-btn {
+    color: white;
+    background-color: #462255;
+    border-radius: 15px;
+    border: solid 1px black;
+    padding: 4px;
+}
+
+.read-btn:hover,
+.delete-btn:hover {
+    color: #462255;
+    background-color: white;
+}
